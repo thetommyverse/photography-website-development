@@ -1,0 +1,195 @@
+:root {
+    --primary-color: #6a4c9c; /* Purple */
+    --secondary-color: #b29fc8; /* Lavender */
+    --highlight-color: #f1c40f; /* Gold */
+    --background-color: #121212; /* Dark background */
+    --header-bg-color: #1e1e1e; /* Dark header background */
+    --button-bg-color: #333;
+    --button-hover-bg-color: #555;
+    --caption-bg-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid var(--secondary-color); /* Lavender border */
+}
+
+.filters {
+    margin-top: 10px;
+}
+
+.filters button {
+    background: var(--button-bg-color);
+    color: white;
+    border: 2px solid var(--secondary-color); /* Lavender border */
+    border-radius: 20px;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.filters button:hover,
+.filters button.active {
+    background: var(--secondary-color); /* Lavender on hover and active */
+    color: var(--background-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(178, 159, 200, 0.5); /* Lavender shadow */
+}
+
+.filters button:focus {
+    outline: none;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px; /* Increased gap between images for more comfort */
+    padding: 30px 20px; /* Added more padding */
+    transition: padding 0.3s ease;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: 12px;
+    object-fit: cover; /* Ensures the image fills the container without borders */
+    border: none; /* Explicitly removes any border around the image */
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--caption-bg-color);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 12px 12px;
+}
+
+.image-container:hover .caption {
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    background-color: var(--background-color);
+    margin: 20px;
+    transition: all 0.3s ease;
+    border: none; /* Explicitly removes any border around the modal content */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-details {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    max-width: 80%;
+    margin-top: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--secondary-color); /* Lavender on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--header-bg-color);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px solid var(--secondary-color); /* Lavender border */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .gallery {
+        padding: 20px;
+    }
+
+    .filters button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}

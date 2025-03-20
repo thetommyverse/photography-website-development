@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tommy's Photography</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <h1>Tommy's Photography</h1>
+    <div class="filters">
+        <button data-category="all">All</button>
+        <button data-category="landscape">Landscape</button>
+        <button data-category="animals">Animals</button>
+        <button data-category="wildlife">Wildlife</button>
+    </div>
+</header>
+<main>
+    <div class="gallery" id="gallery">
+        <div class="image-container landscape">
+            <img src="/sample-image.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+        <div class="image-container animals">
+            <img src="/sample-image.jpg" alt="animals" class="animals" data-caption="animals Image">
+            <div class="caption">animals Image</div>
+        </div>
+        <div class="image-container wildlife">
+            <img src="/sample-image.jpg" alt="Wildlife" class="wildlife" data-caption="Wildlife Image">
+            <div class="caption">Wildlife Image</div>
+        </div>
+        <div class="image-container landscape">
+            <img src="/sample-image.jpg" alt="Mountain" class="landscape" data-caption="Mountain View">
+            <div class="caption">Mountain View</div>
+        </div>
+        <div class="image-container landscape">
+            <img src="/sample-image.jpg" alt="City Night" class="landscape" data-caption="City Nightscape">
+            <div class="caption">City Nightscape</div>
+        </div>
+    </div>
+</main>
+
+
+<div id="image-modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+    <div id="image-metadata"></div> <!-- This is where the caption will go -->
+</div>
+
+<footer>
+    <p>&copy; Tommy's Photography. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
