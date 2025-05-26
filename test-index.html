@@ -10,16 +10,282 @@
 <body>
 <header>
     <h1>Tommy's Photography</h1>
-    <div class="filters">
-        <button data-category="all">All</button>
-        <button data-category="landscape">Landscape</button>
-        <button data-category="animals">Animals</button>
-        <button data-category="wildlife">Wildlife</button>
+    <div class="filter-bar">
+            <div class="filters">
+                <!-- TODO CHANGE TO ICONS -->
+                <button data-category="favourites" class="active">Favourites</button>
+            <button data-category="all">All</button>
+            <button data-category="landscape">Landscape</button>
+            <button data-category="animals">Animals</button>
+            <button data-category="wildlife">Wildlife</button>
+            <button data-category="vehicles">Vehicles</button>
+            <button data-category="people">People</button>
+            <button data-category="cities">Cities</button>
+        </div>
+
+        <div class="search-wrapper">
+            <input type="text" id="search-bar" placeholder="Search images..." />
+            <button id="clear-search" aria-label="Clear search">&times;</button>
+        </div>
     </div>
+
+    <div id="subfilters" class="filters sub-filters" style="display: none;"></div>
+
 </header>
+
+
 <main>
     <div class="gallery" id="gallery">
-        <div class="image-container landscape">
+
+        <!-- LONDON (CITY) -->
+        <div class="image-container cities favourites">
+            <img src="/Photography/ARCHIVE/IMG_20221203_143007~2.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container cities">
+            <img src="/Photography/ARCHIVE/IMG_20221203_143944~3.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container cities">
+            <img src="/Photography/ARCHIVE/IMG_20221203_183250.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container cities">
+            <img src="/Photography/ARCHIVE/IMG_20221203_185339.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <!-- EVA THE LABRADOODLE -->
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010547.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010548.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010549.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010551.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010796.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals dogs">
+            <img src="/Photography/ARCHIVE/P1010797.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <!-- BOATS BOATS BOATS -->
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010563.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010564.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010566.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010568.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010582.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010583.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container vehicles">
+            <img src="/Photography/ARCHIVE/P1010585.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <!-- FLOWERS -->
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010710.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010720.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010726.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010733.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010734.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010736.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010737.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010738.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010743.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010769.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010771.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010772.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container wildlife">
+            <img src="/Photography/ARCHIVE/P1010805.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <!-- COLCHESTER ZOO 2019 -->
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010851.jpg" alt="Penguin at Colchester Zoo, 2019" class="landscape" data-caption="A picture of a penguin at Colchester Zoo photographed in Summer 2019.">
+            <div class="caption">Penguin at Colchester Zoo, 2019</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010852.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010853.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/P1010805.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010858.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010859.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010870.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010874.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010877.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010878.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010881.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010883.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010884.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010890.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010891.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010892.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <div class="image-container animals zoo-animals">
+            <img src="/Photography/ARCHIVE/P1010895.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
+            <div class="caption">Landscape Image</div>
+        </div>
+
+        <!-- TODO Continue with pictures -->
+
+
+
+
+        <!-- <div class="image-container landscape">
             <img src="/sample-image.jpg" alt="Landscape" class="landscape" data-caption="Landscape Image">
             <div class="caption">Landscape Image</div>
         </div>
@@ -38,7 +304,7 @@
         <div class="image-container landscape">
             <img src="/sample-image.jpg" alt="City Night" class="landscape" data-caption="City Nightscape">
             <div class="caption">City Nightscape</div>
-        </div>
+        </div> -->
     </div>
 </main>
 

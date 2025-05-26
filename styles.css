@@ -20,9 +20,35 @@ body {
 header {
     text-align: center;
     padding: 20px;
-    background-color: var(--header-bg-color);
+    background: linear-gradient(-45deg, #1e1e1e, #1f1641, #1e1e1e, #000000);
+    background-size: 400% 400%;
+    animation: headerGradient 20s ease infinite;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-bottom: 2px solid var(--secondary-color); /* Lavender border */
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+@keyframes headerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes headerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .filters {
@@ -54,48 +80,58 @@ header {
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px; /* Increased gap between images for more comfort */
-    padding: 30px 20px; /* Added more padding */
-    transition: padding 0.3s ease;
+    column-count: 3;
+    column-gap: 25px;
+    padding: 30px 20px;
+}
+
+@media (max-width: 1024px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        column-count: 1;
+    }
 }
 
 .image-container {
-    position: relative;
-    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 25px;
+    background-color: #1e1e1e;
     border-radius: 12px;
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .gallery img {
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
-    border-radius: 12px;
-    object-fit: cover; /* Ensures the image fills the container without borders */
-    border: none; /* Explicitly removes any border around the image */
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    opacity: 0.8;
+    display: block;
+    object-fit: contain;
+    border: none;
+    border-bottom: 1px solid var(--secondary-color); /* Divider between image and caption */
 }
 
 .caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background: var(--caption-bg-color);
     color: white;
     padding: 12px;
     text-align: center;
     width: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 1; /* Always visible */
     border-radius: 0 0 12px 12px;
+    font-size: 14px;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+    transition: 0.5s;
 }
 
 .image-container:hover .caption {
@@ -105,6 +141,7 @@ header {
 .modal {
     display: none;
     position: fixed;
+    z-index: 9999; /* Force it to the top */
     top: 0;
     left: 0;
     width: 100%;
@@ -158,6 +195,10 @@ header {
     animation: fadeIn 0.3s ease-in-out;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 .close {
     position: absolute;
     top: 15px;
@@ -173,13 +214,14 @@ header {
 }
 
 footer {
+    z-index: 1; /* Ensure it's below modal */
+    position: relative; /* Needed to apply z-index */
     text-align: center;
     padding: 15px;
     background-color: var(--header-bg-color);
-    position: relative;
     bottom: 0;
     width: 100%;
-    border-top: 2px solid var(--secondary-color); /* Lavender border */
+    border-top: 2px solid var(--secondary-color);
 }
 
 /* Responsive Adjustments */
@@ -192,4 +234,96 @@ footer {
         padding: 10px 15px;
         font-size: 14px;
     }
+}
+
+
+.sub-filters {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start; /* Align buttons to the left */
+}
+
+.filters.sub-filters {
+    justify-content: flex-start !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sub-filters button {
+    background: var(--button-bg-color);
+    color: white;
+    border: 2px solid var(--highlight-color);
+    border-radius: 20px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.sub-filters button.active,
+.sub-filters button:hover {
+    background: var(--highlight-color);
+    color: var(--background-color);
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+#search-bar {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px;
+    background-color: var(--button-bg-color);
+    color: white;
+    width: 250px;
+    transition: border 0.3s ease;
+}
+
+#search-bar {
+    padding-right: 30px; /* space for clear button */
+    font-size: 16px;
+}
+
+#search-bar::placeholder {
+    color: #bbb;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+}
+
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#clear-search {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* hidden by default */
+    padding: 0;
+    line-height: 1;
+}
+
+#clear-search:hover {
+    color: var(--highlight-color);
 }
