@@ -8,7 +8,7 @@ const subfilterContainer = document.getElementById("subfilters");
 const searchBar = document.getElementById("search-bar");
 
 const subfilters = {
-    animals: ["dogs", "zoo-animals"],
+    animals: ["dogs", "zoo-animals", "colchester-zoo-2019", "colchester-zoo-2022"],
     // Add other main category subfilters if you want
 };
 
