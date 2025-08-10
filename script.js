@@ -43,7 +43,6 @@ function renderSubfilters(mainCategory, subcats) {
     activeSubcategory = null; // reset active subcategory on main category change
 }
 
-// Filter gallery based on activeCategory, activeSubcategory, and search query
 function filterGallery() {
     const query = searchBar.value.toLowerCase();
 
@@ -54,24 +53,30 @@ function filterGallery() {
         const classes = container.className.toLowerCase();
         const dataCaption = img.getAttribute("data-caption")?.toLowerCase() || "";
 
-        // Check category/subcategory match
         const categoryMatch = activeCategory === "all" || container.classList.contains(activeCategory);
         const subcategoryMatch = !activeSubcategory || container.classList.contains(activeSubcategory);
+        const searchMatch = alt.includes(query) || caption.includes(query) || classes.includes(query) || dataCaption.includes(query);
 
-        // Check search match
-        const searchMatch =
-            alt.includes(query) ||
-            caption.includes(query) ||
-            classes.includes(query) ||
-            dataCaption.includes(query);
-
-        // Show only if both category & subcategory & search match
         if (categoryMatch && subcategoryMatch && searchMatch) {
-            container.style.display = "inline-block";
+            showWithDeferredPop(container);
         } else {
-            container.style.display = "none";
+            hideAndReset(container);
         }
     });
+}
+
+function filterImages(category) {
+    imageContainers.forEach(container => {
+        const match =
+            category === "all" ? true :
+                category === "favourites" ? container.classList.contains("favourites") :
+                    container.classList.contains(category);
+
+        match ? showWithDeferredPop(container) : hideAndReset(container);
+    });
+
+    subfilterContainer.style.display = "none";
+    subfilterContainer.innerHTML = "";
 }
 
 // Setup main category filter buttons
@@ -167,28 +172,45 @@ window.addEventListener("DOMContentLoaded", () => {
     filterImages("favourites");
 });
 
-function filterImages(category) {
-    imageContainers.forEach(container => {
-        if (category === "all") {
-            container.style.display = "inline-block";
-        } else if (category === "favourites") {
-            // Show only containers with 'favorites' class
-            if (container.classList.contains("favourites")) {
-                container.style.display = "inline-block";
-            } else {
-                container.style.display = "none";
-            }
-        } else {
-            // For other categories, show containers matching that class
-            if (container.classList.contains(category)) {
-                container.style.display = "inline-block";
-            } else {
-                container.style.display = "none";
-            }
-        }
-    });
 
-    // Clear subfilters and hide them when changing main filters
-    subfilterContainer.style.display = "none";
-    subfilterContainer.innerHTML = "";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    imageContainers.forEach(el => observer.observe(el));
+});
+
+// --- viewport helper ---
+function isInViewport(el) {
+    const r = el.getBoundingClientRect();
+    return (
+        r.top < window.innerHeight &&
+        r.bottom > 0 &&
+        r.left < window.innerWidth &&
+        r.right > 0
+    );
+}
+
+// Show item; pop now if it's currently on-screen, otherwise defer to observer
+function showWithDeferredPop(container) {
+    container.style.display = "inline-block";
+    container.classList.remove("visible");      // reset state
+
+    if (isInViewport(container)) {
+        // on-screen now → pop immediately
+        void container.offsetWidth;               // reflow to restart transition
+        container.classList.add("visible");
+    }
+    // off-screen → leave without 'visible'; observer will add it on scroll
+}
+
+function hideAndReset(container) {
+    container.classList.remove("visible");
+    container.style.display = "none";
 }
